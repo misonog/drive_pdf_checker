@@ -21,7 +21,11 @@ $ npm install -g drive_pdf_checker
 ## 利用方法
 
 ```shell
-$ drive_pdf_checker drive_file_url
+$ drive_pdf_checker -t drive_file_url -c your_credential_file
 ```
 
 URL が PDF でない場合のみ、その旨が出力されます。
+
+### 注意事項
+
+`token.json` が実行したディレクトリに生成されます。
