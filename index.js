@@ -27,7 +27,7 @@ if (fileID) {
     if (err) return console.log('Error loading client secret file:', err)
     // Authorize a client with credentials, then call the Google Drive API.
     try {
-      authorize(JSON.parse(content), printMimeTypeMessage)
+      authorize(JSON.parse(content), outputMimeTypeCheckResult)
     } catch (err) {
       console.error(err.message)
     }
@@ -101,11 +101,11 @@ function getAccessToken (oAuth2Client, callback) {
 }
 
 /**
- * Print a message depending on whether the metadata is PDF or not.
+ * Output a message depending on whether the metadata is PDF or not.
  * @param {google.auth.OAuth2} auth An authorized OAuth2 client.
  * @param {string} fileID
  */
-async function printMimeTypeMessage (auth, fileID) {
+async function outputMimeTypeCheckResult (auth, fileID) {
   const metadata = await retrieveFileMetadata(auth, fileID)
   if (metadata.mimeType !== 'application/pdf') {
     console.log('The given file is not PDF')
