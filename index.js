@@ -43,8 +43,11 @@ function toFileID (fileURL) {
   try {
     if (!/drive.google.com/.test(fileURL)) throw new Error(`Error: ${fileURL} is not a Google Drive URL.`)
     const driveURL = new URL(fileURL)
-    const driveURLPathnames = driveURL.pathname.split('/')
-    return driveURLPathnames[driveURLPathnames.length - 1]
+
+    // 以下からfileIDにマッチする正規表現を活用
+    // https://stackoverflow.com/questions/16840038/easiest-way-to-get-file-id-from-url-on-google-apps-script
+    const re = /[-\w]{25,}/
+    return re.exec(driveURL.pathname)[0]
   } catch (err) {
     console.error(err.message)
   }

@@ -1,6 +1,6 @@
 {
   "name": "drive_pdf_checker",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A command line tool to check if a Google Drive file passed as an argument is a PDF.",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
